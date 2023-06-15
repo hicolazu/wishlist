@@ -20,7 +20,7 @@ public class InsertWishlistProductImpl implements InsertWishlistProduct {
     @Override
     public void insert(Wishlist wishlist, Product product) {
         wishlist.getProducts().add(product);
-        var wishlistEntity = wishlistEntityMapper.toEntity(wishlist);
+        var wishlistEntity = wishlistEntityMapper.toWishlistEntity(wishlist);
         wishlistRepository.save(wishlistEntity);
     }
 }

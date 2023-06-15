@@ -1,9 +1,9 @@
-package com.lazuroz.wishlist.dataprovider.repository.entity;
+package com.lazuroz.wishlist.entrypoint.controller.request;
 
 import lombok.Data;
 
 @Data
-public class ProductEntity {
+public class ProductRequest {
     private String sku;
     private String name;
     private String description;

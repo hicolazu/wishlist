@@ -11,7 +11,7 @@ public class Wishlist {
     public Wishlist() {
     }
 
-    public Wishlist(final String id, final Customer customer, final List<Product> products) {
+    public Wishlist(String id, Customer customer, List<Product> products) {
         this.id = id;
         this.customer = customer;
         this.products = products;

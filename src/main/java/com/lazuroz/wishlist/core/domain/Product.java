@@ -1,7 +1,7 @@
 package com.lazuroz.wishlist.core.domain;
 
 public class Product {
-    private String id;
+    private String sku;
     private String name;
     private String description;
     private String imageUrl;
@@ -10,20 +10,20 @@ public class Product {
     public Product() {
     }
 
-    public Product(final String id, final String name, final String description, final String imageUrl, final Double value) {
-        this.id = id;
+    public Product(String sku, String name, String description, String imageUrl, Double value) {
+        this.sku = sku;
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
         this.value = value;
     }
 
-    public String getId() {
-        return id;
+    public String getSku() {
+        return sku;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getName() {

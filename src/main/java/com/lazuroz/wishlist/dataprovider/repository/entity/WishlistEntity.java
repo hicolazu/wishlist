@@ -16,7 +16,7 @@ public class WishlistEntity {
     @Id private String id;
     private CustomerEntity customer;
     private List<ProductEntity> products;
-    @CreatedDate private OffsetDateTime dateCreated;
-    @LastModifiedDate private OffsetDateTime lastUpdated;
-    @Version private Integer version;
+//    @CreatedDate private OffsetDateTime dateCreated;
+//    @LastModifiedDate private OffsetDateTime lastUpdated;
+//    @Version private Integer version;
 }
