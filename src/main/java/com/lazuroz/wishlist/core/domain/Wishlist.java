@@ -1,11 +1,12 @@
 package com.lazuroz.wishlist.core.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Wishlist {
     private String id;
     private Customer customer;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public Wishlist() {
     }
