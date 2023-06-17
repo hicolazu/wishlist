@@ -1,5 +1,6 @@
 package com.lazuroz.wishlist.dataprovider.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 @Document(collection = "wishlist")
 public class WishlistEntity {
     @Id private String id;

@@ -21,16 +21,10 @@ public class WishlistController {
     @Autowired
     private InsertWishlistProductUseCase insertWishlistProductUseCase;
 
-    @Autowired
-    private CustomerRequestMapper customerRequestMapper;
-
-    @Autowired
-    private ProductRequestMapper productRequestMapper;
-
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody @Valid final WishlistRequest wishlistRequest) {
-        var customer = customerRequestMapper.toCustomer(wishlistRequest.getCustomer());
-        var product = productRequestMapper.toProduct(wishlistRequest.getProduct());
+        var customer = CustomerRequestMapper.toCustomer(wishlistRequest.getCustomer());
+        var product = ProductRequestMapper.toProduct(wishlistRequest.getProduct());
         insertWishlistProductUseCase.insert(customer, product);
         return ResponseEntity.ok().build();
     }

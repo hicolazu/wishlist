@@ -16,14 +16,11 @@ public class FindWishlistByCustomerImpl implements FindWishlistByCustomer {
     @Autowired
     private WishlistRepository wishlistRepository;
 
-    @Autowired
-    private WishlistEntityMapper wishlistEntityMapper;
-
     @Override
     public Wishlist find(Customer customer) {
         return wishlistRepository
                 .findByCustomerId(customer.getId())
-                .map(wishlistEntityMapper::toWishlist)
+                .map(WishlistEntityMapper::toWishlist)
                 .orElse(new Wishlist(null, customer, new ArrayList<>()));
     }
 }

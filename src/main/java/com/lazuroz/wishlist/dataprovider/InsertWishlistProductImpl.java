@@ -14,13 +14,10 @@ public class InsertWishlistProductImpl implements InsertWishlistProduct {
     @Autowired
     private WishlistRepository wishlistRepository;
 
-    @Autowired
-    private WishlistEntityMapper wishlistEntityMapper;
-
     @Override
     public void insert(Wishlist wishlist, Product product) {
         wishlist.getProducts().add(product);
-        var wishlistEntity = wishlistEntityMapper.toWishlistEntity(wishlist);
+        var wishlistEntity = WishlistEntityMapper.toWishlistEntity(wishlist);
         wishlistRepository.save(wishlistEntity);
     }
 }
