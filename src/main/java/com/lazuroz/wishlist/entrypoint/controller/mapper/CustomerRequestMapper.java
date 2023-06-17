@@ -20,4 +20,14 @@ public class CustomerRequestMapper {
 
         return customer;
     }
+
+    public static Customer toCustomer(final String customerId) {
+        if (customerId == null)
+            return null;
+
+        final Customer customer = new Customer();
+        customer.setId(customerId);
+
+        return customer;
+    }
 }
