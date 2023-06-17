@@ -6,11 +6,11 @@ import com.lazuroz.wishlist.core.domain.Product;
 import com.lazuroz.wishlist.core.usecase.FindProductByCustomer;
 import com.lazuroz.wishlist.core.usecase.impl.excepion.ProductNotFoundException;
 
-public class FindProductByCustomerImpl implements FindProductByCustomer {
+public class FindProductByCustomerUseCaseImpl implements FindProductByCustomer {
 
     private final FindWishlistByCustomer findWishlistByCustomer;
 
-    public FindProductByCustomerImpl(final FindWishlistByCustomer findWishlistByCustomer) {
+    public FindProductByCustomerUseCaseImpl(final FindWishlistByCustomer findWishlistByCustomer) {
         this.findWishlistByCustomer = findWishlistByCustomer;
     }
 
