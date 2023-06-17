@@ -1,5 +1,6 @@
 package com.lazuroz.wishlist.entrypoint.controller;
 
+import com.lazuroz.wishlist.core.usecase.FindProductByCustomer;
 import com.lazuroz.wishlist.core.usecase.FindWishlistByCustomerUseCase;
 import com.lazuroz.wishlist.core.usecase.InsertWishlistProductUseCase;
 import com.lazuroz.wishlist.entrypoint.controller.mapper.CustomerRequestMapper;
@@ -23,6 +24,9 @@ public class WishlistController {
     @Autowired
     private FindWishlistByCustomerUseCase findWishlistByCustomerUseCase;
 
+    @Autowired
+    private FindProductByCustomer findProductByCustomer;
+
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody @Valid final WishlistRequest wishlistRequest) {
         var customer = CustomerRequestMapper.toCustomer(wishlistRequest.getCustomer());
@@ -37,5 +41,14 @@ public class WishlistController {
         var wishlist = findWishlistByCustomerUseCase.find(customer);
         var wishlistResponse = WishlistResponseMapper.toWishlistResponse(wishlist);
         return ResponseEntity.ok(wishlistResponse);
+    }
+
+    @GetMapping("/products")
+    public ResponseEntity<?> findProductByCustomerId(@RequestParam final String customerId,
+                                                     @RequestParam final String sku) {
+        var customer = CustomerRequestMapper.toCustomer(customerId);
+        var productRequest = ProductRequestMapper.toProduct(sku);
+        var productResponse = findProductByCustomer.find(productRequest, customer);
+        return ResponseEntity.ok(productResponse);
     }
 }

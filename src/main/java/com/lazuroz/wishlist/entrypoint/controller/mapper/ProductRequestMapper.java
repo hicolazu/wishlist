@@ -20,4 +20,13 @@ public class ProductRequestMapper {
 
         return product;
     }
+
+    public static Product toProduct(final String sku) {
+        if (sku == null) return null;
+
+        final Product product = new Product();
+        product.setSku(sku);
+
+        return product;
+    }
 }
