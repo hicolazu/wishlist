@@ -9,6 +9,7 @@ import com.lazuroz.wishlist.entrypoint.controller.mapper.ProductRequestMapper;
 import com.lazuroz.wishlist.entrypoint.controller.mapper.WishlistResponseMapper;
 import com.lazuroz.wishlist.entrypoint.controller.request.WishlistRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -40,7 +41,7 @@ public class WishlistController {
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<?> findAllByCustomerId(@PathVariable final String customerId) {
+    public ResponseEntity<?> findAllByCustomerId(@PathVariable @NotBlank final String customerId) {
         var customer = CustomerRequestMapper.toCustomer(customerId);
         var wishlist = findWishlistByCustomerUseCase.find(customer);
         var wishlistResponse = WishlistResponseMapper.toWishlistResponse(wishlist);
@@ -48,8 +49,8 @@ public class WishlistController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findProductByCustomerId(@RequestParam final String customerId,
-                                                     @RequestParam final String sku) {
+    public ResponseEntity<?> findProductByCustomerId(@RequestParam @NotBlank final String customerId,
+                                                     @RequestParam @NotBlank final String sku) {
         var customer = CustomerRequestMapper.toCustomer(customerId);
         var productRequest = ProductRequestMapper.toProduct(sku);
         var productResponse = findProductByCustomer.find(productRequest, customer);
@@ -57,8 +58,8 @@ public class WishlistController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deleteProductFromWishlist(@RequestParam final String customerId,
-                                                       @RequestParam final String sku) {
+    public ResponseEntity<?> deleteProductFromWishlist(@RequestParam @NotBlank final String customerId,
+                                                       @RequestParam @NotBlank final String sku) {
         var customer = CustomerRequestMapper.toCustomer(customerId);
         var product = ProductRequestMapper.toProduct(sku);
         deleteProductByCustomerUseCase.delete(customer, product);
