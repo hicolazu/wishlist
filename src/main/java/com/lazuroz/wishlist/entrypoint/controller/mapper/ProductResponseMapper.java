@@ -16,7 +16,7 @@ public class ProductResponseMapper {
                 product.getName(),
                 product.getDescription(),
                 product.getImageUrl(),
-                product.getValue()
+                product.getPrice()
         );
 
         return productResponse;

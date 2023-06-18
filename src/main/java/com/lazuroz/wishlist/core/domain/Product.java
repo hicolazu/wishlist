@@ -5,7 +5,7 @@ public class Product {
     private String name;
     private String description;
     private String imageUrl;
-    private Double value;
+    private Double price;
 
     public Product() {
     }
@@ -15,7 +15,7 @@ public class Product {
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.value = value;
+        this.price = value;
     }
 
     public String getSku() {
@@ -50,11 +50,11 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

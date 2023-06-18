@@ -15,7 +15,7 @@ public class ProductRequestMapper {
                 productRequest.getName(),
                 productRequest.getDescription(),
                 productRequest.getImageUrl(),
-                productRequest.getValue()
+                productRequest.getPrice()
         );
 
         return product;

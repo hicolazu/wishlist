@@ -15,7 +15,7 @@ public class ProductEntityMapper {
                 productEntity.getName(),
                 productEntity.getDescription(),
                 productEntity.getImageUrl(),
-                productEntity.getValue()
+                productEntity.getPrice()
         );
 
         return product;
@@ -29,7 +29,7 @@ public class ProductEntityMapper {
                 product.getName(),
                 product.getDescription(),
                 product.getImageUrl(),
-                product.getValue()
+                product.getPrice()
         );
 
         return productEntity;

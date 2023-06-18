@@ -17,5 +17,5 @@ public class ProductRequest {
     private String imageUrl;
 
     @NotBlank
-    private Double value;
+    private Double price;
 }
