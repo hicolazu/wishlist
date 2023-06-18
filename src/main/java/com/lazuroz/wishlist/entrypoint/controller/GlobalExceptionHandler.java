@@ -4,6 +4,7 @@ import com.lazuroz.wishlist.core.usecase.impl.excepion.ProductNotFoundException;
 import com.lazuroz.wishlist.entrypoint.controller.response.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class GlobalExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
+    @Value("${swagger.openapi.email}")
+    private String email;
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<?> handleProductNotFoundException(final ProductNotFoundException exception) {
         final ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
@@ -30,5 +34,12 @@ public class GlobalExceptionHandler {
         final ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
         LOGGER.warn(exception.getMessage());
         return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<?> handleException(final Exception exception) {
+        final ErrorResponse errorResponse = new ErrorResponse("Internal server error. Please contact " + email + ".");
+        LOGGER.error(exception.getMessage());
+        return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
