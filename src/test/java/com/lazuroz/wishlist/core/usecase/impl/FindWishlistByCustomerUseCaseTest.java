@@ -1,7 +1,6 @@
 package com.lazuroz.wishlist.core.usecase.impl;
 
 import com.lazuroz.wishlist.core.dataprovider.FindWishlistByCustomer;
-import com.lazuroz.wishlist.core.domain.Wishlist;
 import com.lazuroz.wishlist.core.domain.builder.CustomerBuilder;
 import com.lazuroz.wishlist.core.domain.builder.WishlistBuilder;
 import com.lazuroz.wishlist.core.usecase.FindWishlistByCustomerUseCase;
@@ -20,7 +19,7 @@ class FindWishlistByCustomerUseCaseTest {
     FindWishlistByCustomer findWishlistByCustomer;
 
     @Test
-    void testFind() {
+    void GivenACustomer_WhenFindWishlist_ThenFind() {
         // GIVEN
         var customer = new CustomerBuilder()
                 .withId("1")
