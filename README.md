@@ -24,5 +24,9 @@ Setup VM options with property **-Dspring.profiles.active=local**
 ## **Swagger**
 * [Swagger](http://localhost:8080/swagger-ui/index.html)
 
+## **Postman**
+To test the API with Postman, import the following collection:
+https://api.postman.com/collections/15714649-0da82f21-46c3-4d70-a4e3-f5b77c95fe5a?access_key=PMAT-01H37TKZ1ZNT6RVA30YTGR94BQ
+
 ## **Tests**
 This application is tested with [TestContainers](https://www.testcontainers.org/)
