@@ -1,0 +1,15 @@
+{
+  "product": {
+    "sku": "teste",
+    "name": "teste",
+    "description": "produto de teste",
+    "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dentalcremer.com.br%2Fescova-dental-adulto-macia-medfio-759396.html&psig=AOvVaw0VCxcJoK64n37ex5a3FYSW&ust=1686882064509000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPDs3cObxP8CFQAAAAAdAAAAABAI",
+    "price": 10.0
+  },
+  "customer": {
+    "id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "cpf": "123131241"
+  }
+}
