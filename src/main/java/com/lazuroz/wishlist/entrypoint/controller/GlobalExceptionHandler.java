@@ -1,6 +1,7 @@
 package com.lazuroz.wishlist.entrypoint.controller;
 
 import com.lazuroz.wishlist.core.usecase.impl.excepion.ProductNotFoundException;
+import com.lazuroz.wishlist.core.usecase.impl.excepion.WishlistFullException;
 import com.lazuroz.wishlist.entrypoint.controller.response.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,10 +37,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(WishlistFullException.class)
+    public ResponseEntity<?> handleWishlistFullException(final WishlistFullException exception) {
+        final ErrorResponse errorResponse = new ErrorResponse(exception.getMessage());
+        LOGGER.warn(exception.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleException(final Exception exception) {
         final ErrorResponse errorResponse = new ErrorResponse("Internal server error. Please contact " + email + ".");
         LOGGER.error(exception.getMessage(), exception);
         return new ResponseEntity<>(errorResponse, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

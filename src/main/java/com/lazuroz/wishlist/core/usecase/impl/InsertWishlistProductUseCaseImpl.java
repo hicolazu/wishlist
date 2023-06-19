@@ -5,6 +5,7 @@ import com.lazuroz.wishlist.core.dataprovider.InsertWishlistProduct;
 import com.lazuroz.wishlist.core.domain.Customer;
 import com.lazuroz.wishlist.core.domain.Product;
 import com.lazuroz.wishlist.core.usecase.InsertWishlistProductUseCase;
+import com.lazuroz.wishlist.core.usecase.impl.excepion.WishlistFullException;
 
 public class InsertWishlistProductUseCaseImpl implements InsertWishlistProductUseCase {
 
@@ -20,6 +21,8 @@ public class InsertWishlistProductUseCaseImpl implements InsertWishlistProductUs
     @Override
     public void insert(Customer customer, Product product) {
         var wishlist = findWishlistByCustomer.find(customer);
+        if (wishlist.getProducts().size() == 20)
+            throw new WishlistFullException(customer, product);
         insertWishlistProduct.insert(wishlist, product);
     }
 }
